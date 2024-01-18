@@ -52,6 +52,7 @@ let computerChoiceTxt = document.querySelector("#computerChoiceTxt")
 let buttons = document.querySelectorAll(".btn")
 let points = [3, 3]
 let randomNumber;
+var act = document.getElementById("act");
 
 
 
@@ -216,13 +217,18 @@ function gameRules() {
         MoveLeft();
     }    
 }
-    
+
+const Win = new Audio("/sound/Win.mp3");
+const Lose = new Audio("/sound/Lose.mp3");
+
 function whoWon() {
     if (points[1] <= 0) {
+        Win.play();
         alert("Win")
         points = [3, 3];
-        act.disabled = true;
+        act.disabled = true; 
     } else if (points[0] <= 0) {
+        Lose.play();
         alert("Lose")
         points = [3, 3];
         act.disabled = true;
