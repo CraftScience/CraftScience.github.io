@@ -53,8 +53,7 @@ let buttons = document.querySelectorAll(".btn")
 let points = [3, 3]
 let randomNumber;
 var act = document.getElementById("act");
-
-
+const judge = true;
 
 // EVENT LISTENERS
 buttons.forEach((button) => {
