@@ -10,7 +10,7 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: white
+  background: white;
 }
 
 #container {
@@ -50,7 +50,8 @@ body {
   width: 50%;
 }
 
-#computerChoice, #playerChoice {
+#computerChoice,
+#playerChoice {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -59,7 +60,8 @@ body {
   max-height: 130px;
 }
 
-#computerChoiceTxt, #playerChoiceTxt   {
+#computerChoiceTxt,
+#playerChoiceTxt {
   margin-top: 1rem;
 }
 
@@ -72,7 +74,7 @@ body {
 
 #resTxt {
   width: 20px;
-  top: 0px
+  top: 0px;
   display: inline-block;
   line-height: 1em;
   position: absolute;
@@ -97,17 +99,21 @@ body {
   display: inline-block;
   transition: all 0.3s ease 0s;
   cursor: pointer;
-  margin: 0rem .3rem;
-  }
+  margin: 0rem 0.3rem;
+}
 
-  .btn:hover {
-    color: #404040 !important;
-    font-weight: 700 !important;
-    background: white;
-    -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
-    -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
-    transition: all 0.3s ease 0s;
-  }
-
-
-
+.btn:hover {
+  color: #404040 !important;
+  font-weight: 700 !important;
+  background: white;
+  -webkit-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+  -moz-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+  transition: all 0.3s ease 0s;
+}
+.btn:disabled {
+  cursor: not-allowed;
+}
+#res {
+  display: inline-block;
+  position: absolute;
+}
