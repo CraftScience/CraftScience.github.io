@@ -3,26 +3,27 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <meta http-equiv="refresh" url="./asset/dist/index.html">  -->
     <script src="https://cdn.jsdelivr.net/npm/pace-js@latest/pace.min.js"></script>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/pace-js@latest/pace-theme-default.min.css"
       ></link>
     <link rel="stylesheet" href="css/style.css" />
-    <link rel="prefetch" href="./img/waiting.gif" />
-    <link rel="prefetch" href="./img/eight.png" />
-    <link rel="prefetch" href="./img/five.png" />
-    <link rel="prefetch" href="./img/four.png" />
-    <link rel="prefetch" href="./img/nine.png" />
-    <link rel="prefetch" href="./img/one.png" />
-    <link rel="prefetch" href="./img/seven-one.png" />
-    <link rel="prefetch" href="./img/seven.png" />
-    <link rel="prefetch" href="./img/six.png" />
-    <link rel="prefetch" href="./img/ten.png" />
-    <link rel="prefetch" href="./img/three.png" />
-    <link rel="prefetch" href="img/two.png" />
-    <link rel="prefetch" href="./sound/Lose.mp3" />
-    <link rel="prefetch" href="./sound/Win.mp3" />
+    <link rel="prefetch" href="./asset/img/waiting.gif" />
+    <link rel="prefetch" href="./asset/img/eight.png" />
+    <link rel="prefetch" href="./asset/img/five.png" />
+    <link rel="prefetch" href="./asset/img/four.png" />
+    <link rel="prefetch" href="./asset/img/nine.png" />
+    <link rel="prefetch" href="./asset/img/one.png" />
+    <link rel="prefetch" href="./asset/img/seven-one.png" />
+    <link rel="prefetch" href="./asset/img/seven.png" />
+    <link rel="prefetch" href="./asset/img/six.png" />
+    <link rel="prefetch" href="./asset/img/ten.png" />
+    <link rel="prefetch" href="./asset/img/three.png" />
+    <link rel="prefetch" href="./asset/img/two.png" />
+    <link rel="prefetch" href="./asset/sound/Lose.mp3" />
+    <link rel="prefetch" href="./asset/sound/Win.mp3" />
     <title>FingerGame</title>
     <link
       rel="icon"
@@ -33,11 +34,12 @@
   <body>
     <div id="container">
       <h2>FingerGame</h2>
+      <a href="./asset/dist/index.html" class="button">Genshin</a>
       <div id="game-container">
         <div id="points">
-          <label for="playerPoints">Player Score：</label>
+          <label for="playerPoints">Player Score:</label>
           <span class="playerPoints"></span>
-          <label for="computerPoints">Computer Score：</label>
+          <label for="computerPoints">Computer Score:</label>
           <span class="computerPoints"></span>
         </div>
         <div id="choice">
@@ -70,6 +72,7 @@
             <h3 id="res">player</h3>
       </div>
     </div>
+    <button type="button" onclick="openWindow()">打开弹窗</button>
     <script src="js/script.js"></script>
   </body>
 </html>
