@@ -474,7 +474,7 @@ function newWindow() {
     height: "80%",
     title: "Game Rules",
     content: "",
-    url: "",
+    url: "https://github.com/CraftScience/CraftScience.github.io/blob/main/README.md",
   }).openLayer();
 }
 //Iframe
