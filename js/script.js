@@ -63,51 +63,51 @@ var losing = 0;
 const choices = [
   {
     id: 0,
-    image: "./img/zero.png",
+    image: "./asset/img/zero.png",
   },
   {
     id: 1,
-    image: "./img/one.png",
+    image: "./asset/img/one.png",
   },
   {
     id: 2,
-    image: "./img/two.png",
+    image: "./asset/img/two.png",
   },
   {
     id: 3,
-    image: "./img/three.png",
+    image: "./asset/img/three.png",
   },
   {
     id: 4,
-    image: "./img/four.png",
+    image: "./asset/img/four.png",
   },
   {
     id: 5,
-    image: "./img/five.png",
+    image: "./asset/img/five.png",
   },
   {
     id: 6,
-    image: "./img/six.png",
+    image: "./asset/img/six.png",
   },
   {
     id: 7,
-    image: "./img/seven.png",
+    image: "./asset/img/seven.png",
   },
   {
     id: 8,
-    image: "./img/eight.png",
+    image: "./asset/img/eight.png",
   },
   {
     id: 9,
-    image: "./img/nine.png",
+    image: "./asset/img/nine.png",
   },
   {
     id: 10,
-    image: "./img/ten.png",
+    image: "./asset/img/ten.png",
   },
   {
     id: 11,
-    image: "./img/seven-one.png",
+    image: "./asset/img/seven-one.png",
   },
 ];
 
@@ -191,7 +191,12 @@ buttons.forEach((button) => {
 
 // FUNCTIONS
 function getComputerChoice() {
-  computerChoiceImg.src = "./img/waiting.gif";
+  computerChoiceImg.src = "./asset/img/waiting.png";
+  var current = 10;
+  myinterval = setInterval(function () {
+    (computerChoiceImg.style.transform = "rotate(" + current + "deg)"),
+      (current += 10);
+  }, 20);
   setTimeout(() => {
     if (kill == true) {
       randomNumber = 11;
@@ -200,18 +205,20 @@ function getComputerChoice() {
       randomNumber = Math.floor(Math.random() * 5 + 5);
       computerjudge = true;
     } else {
-      randomNumber = Math.floor(Math.random() * 10);
+      randomNumber = Math.floor(Math.random() * 11);
       if (0 < randomNumber < 5) {
         computerjudge = false;
       }
     }
+    clearInterval(myinterval);
+    computerChoiceImg.style.transform = null;
     computerChoiceImg.src = choices[randomNumber].image;
     computerChoiceTxt.textContent = choices[randomNumber].id;
     gameRules();
     playerPoints.textContent = points[0];
     computerPoints.textContent = points[1];
     whoWon();
-  }, 1000);
+  }, Math.floor(Math.random() * 3 + 1) * 1000);
 }
 
 function gameRules() {
@@ -456,7 +463,18 @@ function openWindow() {
     height: "80%",
     title: "Leaderboard",
     content: "",
-    url: "https://juejin.cn/",
+    url: "https://open.yesapi.cn/?r=Share/Data&hash=E52FD4B9C437A0A520466D07684DB2A0CF17C3980F9351D6249C476CB06780E8#pageTop",
+  }).openLayer();
+}
+function newWindow() {
+  new MyLayer({
+    top: "10%",
+    left: "10%",
+    width: "80%",
+    height: "80%",
+    title: "Game Rules",
+    content: "",
+    url: "",
   }).openLayer();
 }
 //Iframe

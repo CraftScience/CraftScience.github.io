@@ -1,12 +1,18 @@
-游戏规则： 1.玩家初始生命值为 3，游戏采取回合制，当玩家生命值低于等于 0 时，该玩家失败，游戏结束。 2.每个回合内，两名玩家同时选择并公开使用 0，1，2，3，4，5，6，7，8，9，10, 71 共计 12 个数字中的任意一个。开始时，玩家不能使用数字 71。 3.如果出现连续的数字 1，2，3，4，则该出牌无效，玩家需要重新选择。 4.如果两名玩家出相同的数字，则游戏继续进行下一回合。 5.下面是特殊规则：
-·如果玩家出 10，并且对方出 3,则对方生命值减 1。
-·如果玩家出 9，并且对方出 1,则对方生命值减 1。
-·如果玩家出 9，并且对方出 6，则玩家获得一点额外生命值。
-·如果玩家出 8，并且对方出 2，则对方生命值减 2。（未加入加 1 减 1）
-·如果玩家出 7，并且对方出 1，则玩家获得一个特殊数字 71，并且在接下来的该轮游戏中的任意一个回合可以使用。
-·如果玩家出 71，对方没有出 0 防御，则对方生命值减 3。(电脑还未优化)
-·如果玩家出 6，并且对方出 1，则玩家获得一点额外生命值。
-·如果玩家出 5，并且对方出 0，则对方生命值减 1。
-·如果玩家出 3，并且对方出 2，则对方生命值减 1。（未加入减 1）
-·如果玩家出 0，并且对方没有出 5，则对方无法在该回合对玩家造成任何伤害。
-·除以上规则之外，较小的数字可以对较大的数字的玩家造成一点伤害。
+Game Rules:
+
+1. The player starts with 3 life points. The game is played in turns, and when a player's life points reach 0 or below, that player loses and the game ends.
+2. In each turn, both players simultaneously select and reveal one of the twelve numbers: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, and 71 (the number 71 cannot be used initially)
+3. If consecutive numbers 1, 2, 3, 4 are played by either player, the play is invalid, and the player needs to choose again.
+4. If both players play the same number, the game continues to the next round.
+5. Here are the special rules:
+   · If a player plays 10 and the opponent plays 3, the opponent's life points are reduced by 1.
+   · If a player plays 9 and the opponent plays 1, the opponent's life points are reduced by 1.
+   · If a player plays 9 and the opponent plays 6, the player gains an additional life point.
+   ● If a player plays 8 and the opponent plays 2, the opponent's life points are reduced by 2. (Not including +1 or -1)
+   · If a player plays 7 and the opponent plays 1, the player gains a special number 71, which can be used in any subsequent turn of the game.
+   · If a player plays 71 and the opponent does not play 0 as defense, the opponent's life points are reduced by 3. (The computer optimization has not been included yet)
+   · If a player plays 6 and the opponent plays 1, the player gains an additional life point.
+   · If a player plays 5 and the opponent plays 0, the opponent's life points are reduced by 1.
+   · If a player plays 3 and the opponent plays 2, the opponent's life points are reduced by 1. (Not including -1)
+   · If a player plays 0 and the opponent does not play 5, the opponent cannot infict any damage to the player in that round.
+   · Apart from the above rules, a smaller number can cause one point of damage to the player with a larger number.
