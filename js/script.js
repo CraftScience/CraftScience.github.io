@@ -1,52 +1,154 @@
-﻿var user = prompt("Login", "Your Name Please");
+﻿function getCookie(cname) {
+  var name = cname + "=";
+  var ca = document.cookie.split(";");
+  for (var i = 0; i < ca.length; i++) {
+    var c = ca[i].trim();
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  if (cname == "username") {
+    return "";
+  } else return "0";
+}
 var recvJson = "";
-var winning = 0;
-var losing = 0;
-// var data = JSON.stringify({
-//   app_key: "E52FD4B9C437A0A520466D07684DB2A0",
-//   return_data: "1",
-//   model_name: "grade",
-//   select: "username,win,lose",
-//   logic: "or",
-//   where: `[["username", "=", "${user}"]]`,
-//   page: "1",
-//   perpage: "10",
-//   is_real_total: "1",
-// });
-// var newdata = JSON.stringify({
-//   app_key: "E52FD4B9C437A0A520466D07684DB2A0",
-//   return_data: "1",
-//   model_name: "grade",
-//   data: `{"username":"${user}","win":"0","lose":"0"}`,
-//   check_field: "username",
-//   logic: "or",
-// });
-// const Http = new XMLHttpRequest();
-// const url = "https://hn216.api.yesapi.cn/api/App/Table/FreeQuery";
-// const link = "https://hn216.api.yesapi.cn/api/App/Table/CheckCreateOrUpdate";
-// Http.open("POST", url);
-// Http.send(data);
-
-// Http.onreadystatechange = (e) => {
-//   if (Http.readyState == 4) {
-//     recvJson = JSON.parse(Http.responseText);
-//     if (typeof recvJson["list"]["0"] == "undefined") {
-//       var r = confirm("Create a new player name?");
-//       if (r == false) {
-//         location.reload();
-//       } else {
-//         const xhr = new XMLHttpRequest();
-//         xhr.open("POST", link);
-//         xhr.send(newdata);
-//       }
-//     } else {
-//       alert("Welcomeback," + user);
-//       winning = recvJson["list"]["0"]["win"];
-//       losing = recvJson["list"]["0"]["lose"];
+var user = getCookie("username");
+var winning = getCookie("win");
+var losing = getCookie("lose");
+function setCookie(cname, cvalue, exdays) {
+  var d = new Date();
+  d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+  var expires = "expires=" + d.toGMTString();
+  document.cookie = cname + "=" + cvalue + "; " + expires;
+}
+function updateCookie(cname, cvalue, exdays) {
+  var d = new Date();
+  d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+  var expires = "expires=" + d.toGMTString();
+  document.cookie = cname + "=" + cvalue + "; " + expires;
+}
+// if (user != "") {
+//   var c = confirm("Use history settings?");
+//   if (c == false) {
+//     user = prompt("Login", "Click Cancel to go offline");
+//     if (user != "" && user != null) {
+//       var data = JSON.stringify({
+//         app_key: "E52FD4B9C437A0A520466D07684DB2A0",
+//         return_data: "1",
+//         model_name: "grade",
+//         select: "username,win,lose",
+//         logic: "or",
+//         where: `[["username", "=", "${user}"]]`,
+//         page: "1",
+//         perpage: "10",
+//         is_real_total: "1",
+//       });
+//       var newdata = JSON.stringify({
+//         app_key: "E52FD4B9C437A0A520466D07684DB2A0",
+//         return_data: "1",
+//         model_name: "grade",
+//         data: `{"username":"${user}","win":"${winning},"lose":"${losing}"}`,
+//         check_field: "username",
+//         logic: "or",
+//       });
+//       const Http = new XMLHttpRequest();
+//       const url = "https://hn216.api.yesapi.cn/api/App/Table/FreeQuery";
+//       const link =
+//         "https://hn216.api.yesapi.cn/api/App/Table/CheckCreateOrUpdate";
+//       Http.open("POST", url);
+//       Http.send(data);
+//       Http.onreadystatechange = (e) => {
+//         if (Http.readyState == 4) {
+//           recvJson = JSON.parse(Http.responseText);
+//           if (typeof recvJson["list"]["0"] == "undefined") {
+//             var r = confirm(
+//               "Create a new player name? This will erase local data."
+//             );
+//             if (r == false) {
+//               location.reload();
+//             } else {
+//               alert("Welcome," + user);
+//               const xhr = new XMLHttpRequest();
+//               xhr.open("POST", link);
+//               xhr.send(newdata);
+//               setCookie("username", user, 30);
+//               setCookie("win", 0, 30);
+//               setCookie("lose", 0, 30);
+//             }
+//           } else {
+//             alert("Welcomeback," + user);
+//             winning = recvJson["list"]["0"]["win"];
+//             losing = recvJson["list"]["0"]["lose"];
+//             setCookie("username", user, 30);
+//             setCookie("win", winning, 30);
+//             setCookie("lose", losing, 30);
+//           }
+//         }
+//       };
 //     }
+//   } else {
+//     alert("Welcomeback," + user);
 //   }
-// };
-// function Update(winning, losing) {
+// } else {
+//   user = prompt("Login", "Click Cancel to go offline");
+//   if (user != "" && user != null) {
+//     var data = JSON.stringify({
+//       app_key: "E52FD4B9C437A0A520466D07684DB2A0",
+//       return_data: "1",
+//       model_name: "grade",
+//       select: "username,win,lose",
+//       logic: "or",
+//       where: `[["username", "=", "${user}"]]`,
+//       page: "1",
+//       perpage: "10",
+//       is_real_total: "1",
+//     });
+//     var newdata = JSON.stringify({
+//       app_key: "E52FD4B9C437A0A520466D07684DB2A0",
+//       return_data: "1",
+//       model_name: "grade",
+//       data: `{"username":"${user}","win":"${winning},"lose":"${losing}"}`,
+//       check_field: "username",
+//       logic: "or",
+//     });
+//     const Http = new XMLHttpRequest();
+//     const url = "https://hn216.api.yesapi.cn/api/App/Table/FreeQuery";
+//     const link =
+//       "https://hn216.api.yesapi.cn/api/App/Table/CheckCreateOrUpdate";
+//     Http.open("POST", url);
+//     Http.send(data);
+//     Http.onreadystatechange = (e) => {
+//       if (Http.readyState == 4) {
+//         recvJson = JSON.parse(Http.responseText);
+//         if (typeof recvJson["list"]["0"] == "undefined") {
+//           var r = confirm(
+//             "Create a new player name? This will erase local data."
+//           );
+//           if (r == false) {
+//             location.reload();
+//           } else {
+//             alert("Welcome," + user);
+//             const xhr = new XMLHttpRequest();
+//             xhr.open("POST", link);
+//             xhr.send(newdata);
+//             setCookie("username", user, 30);
+//             setCookie("win", 0, 30);
+//             setCookie("lose", 0, 30);
+//           }
+//         } else {
+//           alert("Welcomeback," + user);
+//           winning = recvJson["list"]["0"]["win"];
+//           losing = recvJson["list"]["0"]["lose"];
+//           setCookie("username", user, 30);
+//           setCookie("win", winning, 30);
+//           setCookie("lose", losing, 30);
+//         }
+//       }
+//     };
+//   }
+// }
+// const link = "https://hn216.api.yesapi.cn/api/App/Table/CheckCreateOrUpdate";
+// function Update() {
 //   var update = JSON.stringify({
 //     app_key: "E52FD4B9C437A0A520466D07684DB2A0",
 //     return_data: "1",
@@ -58,6 +160,11 @@ var losing = 0;
 //   const request = new XMLHttpRequest();
 //   request.open("POST", link);
 //   request.send(update);
+//   request.onreadystatechange = (e) => {
+//     if (request.readyState == 4) {
+//       alert("Success!");
+//     }
+//   };
 // }
 // VARIABLES
 const choices = [
@@ -199,10 +306,16 @@ function getComputerChoice() {
   }, 20);
   setTimeout(() => {
     if (kill == true) {
-      randomNumber = 11;
-      kill = false;
+      items = [11, 5];
+      randomNumber = items[Math.floor(Math.random() * 2)];
+      if (randomNumber == 11) kill = false;
+    } else if (act.disabled == false) {
+      items = [0, 0, 1, 10];
+      randomNumber = items[Math.floor(Math.random() * 4)];
+      if (randomNumber == 1) randomNumber = Math.floor(Math.random() * 4 + 1);
     } else if (computerjudge == false) {
-      randomNumber = Math.floor(Math.random() * 5 + 5);
+      items = [0, 5, 6, 7, 8, 9, 10];
+      randomNumber = items[Math.floor(Math.random() * 7)];
       computerjudge = true;
     } else {
       randomNumber = Math.floor(Math.random() * 11);
@@ -238,14 +351,14 @@ function gameRules() {
     resTxt.textContent = "Tie";
   } else if (
     playerChoiceTxt.textContent === "11" &&
-    computerChoiceTxt.textContent !== "5"
+    computerChoiceTxt.textContent !== "0"
   ) {
     act.style.backgroundColor = "#404040";
     points[1] -= 3;
     resTxt.textContent = "KO";
     MoveRight();
   } else if (
-    playerChoiceTxt.textContent !== "5" &&
+    playerChoiceTxt.textContent !== "0" &&
     computerChoiceTxt.textContent === "11"
   ) {
     points[0] -= 3;
@@ -337,16 +450,31 @@ function gameRules() {
     playerChoiceTxt.textContent === "8" &&
     computerChoiceTxt.textContent === "2"
   ) {
-    points[1] -= 2;
-    resTxt.textContent = "PaPa";
-    MoveRight();
+    var ch = confirm("Choose OK to PaPa or Cancel to PaHui");
+    if (ch == false) {
+      points[1] -= 1;
+      points[0] += 1;
+      resTxt.textContent = "PaHui";
+      MoveRight();
+    } else {
+      points[1] -= 2;
+      resTxt.textContent = "PaPa";
+      MoveRight();
+    }
   } else if (
     playerChoiceTxt.textContent === "2" &&
     computerChoiceTxt.textContent === "8"
   ) {
-    points[0] -= 2;
-    resTxt.textContent = "PaPa";
-    MoveLeft();
+    if (points[0] == 2 || points[1] > 1) {
+      points[0] -= 2;
+      resTxt.textContent = "PaPa";
+      MoveLeft();
+    } else {
+      points[0] -= 1;
+      points[1] += 1;
+      resTxt.textContent = "PaHui";
+      MoveLeft();
+    }
   } else if (
     playerChoiceTxt.textContent === "7" &&
     computerChoiceTxt.textContent === "1"
@@ -380,16 +508,29 @@ function gameRules() {
     playerChoiceTxt.textContent === "3" &&
     computerChoiceTxt.textContent === "2"
   ) {
-    points[1]--;
-    resTxt.textContent = "Kou";
-    MoveRight();
+    var cho = confirm("Choose OK to Kou or Cancel to Hui");
+    if (cho == false) {
+      points[0]++;
+      resTxt.textContent = "Hui";
+      MoveLeft();
+    } else {
+      points[1]--;
+      resTxt.textContent = "Kou";
+      MoveRight();
+    }
   } else if (
     playerChoiceTxt.textContent === "2" &&
     computerChoiceTxt.textContent === "3"
   ) {
-    points[0]--;
-    resTxt.textContent = "Kou";
-    MoveLeft();
+    if (points[1] < 2) {
+      points[1]++;
+      resTxt.textContent = "Hui";
+      MoveRight();
+    } else {
+      points[0]--;
+      resTxt.textContent = "Kou";
+      MoveLeft();
+    }
   } else if (playerChoiceTxt.textContent === "10") {
     points[0]--;
     resTxt.textContent = "Cha";
@@ -414,15 +555,33 @@ const Lose = new Audio("asset/sound/Lose.mp3");
 
 function whoWon() {
   if (points[1] <= 0) {
+    playerjudge = true;
+    computerjudge = true;
+    kill = false;
+    status1.disabled = false;
+    status2.disabled = false;
+    status3.disabled = false;
+    status4.disabled = false;
     Win.play();
-    winning += 1;
-    alert("Win");
+    winning = parseInt(winning) + 1;
+    setCookie("win", winning, 30);
+    setCookie("lose", losing, 30);
+    alert("Win！Press any number to restart.");
     points = [3, 3];
     act.disabled = true;
   } else if (points[0] <= 0) {
+    playerjudge = true;
+    computerjudge = true;
+    kill = false;
+    status1.disabled = false;
+    status2.disabled = false;
+    status3.disabled = false;
+    status4.disabled = false;
     Lose.play();
-    losing += 1;
-    alert("Lose");
+    losing = parseInt(losing) + 1;
+    setCookie("win", winning, 30);
+    setCookie("lose", losing, 30);
+    alert("Lose! Press any number to restart.");
     points = [3, 3];
     act.disabled = true;
   }
@@ -474,7 +633,7 @@ function newWindow() {
     height: "80%",
     title: "Game Rules",
     content: "",
-    url: "https://github.com/CraftScience/CraftScience.github.io/blob/main/README.md",
+    url: "./asset/pages/rules.html",
   }).openLayer();
 }
 //Iframe
