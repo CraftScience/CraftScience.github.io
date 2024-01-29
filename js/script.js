@@ -27,145 +27,145 @@ function updateCookie(cname, cvalue, exdays) {
   var expires = "expires=" + d.toGMTString();
   document.cookie = cname + "=" + cvalue + "; " + expires;
 }
-// if (user != "") {
-//   var c = confirm("Use history settings?");
-//   if (c == false) {
-//     user = prompt("Login", "Click Cancel to go offline");
-//     if (user != "" && user != null) {
-//       var data = JSON.stringify({
-//         app_key: "E52FD4B9C437A0A520466D07684DB2A0",
-//         return_data: "1",
-//         model_name: "grade",
-//         select: "username,win,lose",
-//         logic: "or",
-//         where: `[["username", "=", "${user}"]]`,
-//         page: "1",
-//         perpage: "10",
-//         is_real_total: "1",
-//       });
-//       var newdata = JSON.stringify({
-//         app_key: "E52FD4B9C437A0A520466D07684DB2A0",
-//         return_data: "1",
-//         model_name: "grade",
-//         data: `{"username":"${user}","win":"${winning},"lose":"${losing}"}`,
-//         check_field: "username",
-//         logic: "or",
-//       });
-//       const Http = new XMLHttpRequest();
-//       const url = "https://hn216.api.yesapi.cn/api/App/Table/FreeQuery";
-//       const link =
-//         "https://hn216.api.yesapi.cn/api/App/Table/CheckCreateOrUpdate";
-//       Http.open("POST", url);
-//       Http.send(data);
-//       Http.onreadystatechange = (e) => {
-//         if (Http.readyState == 4) {
-//           recvJson = JSON.parse(Http.responseText);
-//           if (typeof recvJson["list"]["0"] == "undefined") {
-//             var r = confirm(
-//               "Create a new player name? This will erase local data."
-//             );
-//             if (r == false) {
-//               location.reload();
-//             } else {
-//               alert("Welcome," + user);
-//               const xhr = new XMLHttpRequest();
-//               xhr.open("POST", link);
-//               xhr.send(newdata);
-//               setCookie("username", user, 30);
-//               setCookie("win", 0, 30);
-//               setCookie("lose", 0, 30);
-//             }
-//           } else {
-//             alert("Welcomeback," + user);
-//             winning = recvJson["list"]["0"]["win"];
-//             losing = recvJson["list"]["0"]["lose"];
-//             setCookie("username", user, 30);
-//             setCookie("win", winning, 30);
-//             setCookie("lose", losing, 30);
-//           }
-//         }
-//       };
-//     }
-//   } else {
-//     alert("Welcomeback," + user);
-//   }
-// } else {
-//   user = prompt("Login", "Click Cancel to go offline");
-//   if (user != "" && user != null) {
-//     var data = JSON.stringify({
-//       app_key: "E52FD4B9C437A0A520466D07684DB2A0",
-//       return_data: "1",
-//       model_name: "grade",
-//       select: "username,win,lose",
-//       logic: "or",
-//       where: `[["username", "=", "${user}"]]`,
-//       page: "1",
-//       perpage: "10",
-//       is_real_total: "1",
-//     });
-//     var newdata = JSON.stringify({
-//       app_key: "E52FD4B9C437A0A520466D07684DB2A0",
-//       return_data: "1",
-//       model_name: "grade",
-//       data: `{"username":"${user}","win":"${winning},"lose":"${losing}"}`,
-//       check_field: "username",
-//       logic: "or",
-//     });
-//     const Http = new XMLHttpRequest();
-//     const url = "https://hn216.api.yesapi.cn/api/App/Table/FreeQuery";
-//     const link =
-//       "https://hn216.api.yesapi.cn/api/App/Table/CheckCreateOrUpdate";
-//     Http.open("POST", url);
-//     Http.send(data);
-//     Http.onreadystatechange = (e) => {
-//       if (Http.readyState == 4) {
-//         recvJson = JSON.parse(Http.responseText);
-//         if (typeof recvJson["list"]["0"] == "undefined") {
-//           var r = confirm(
-//             "Create a new player name? This will erase local data."
-//           );
-//           if (r == false) {
-//             location.reload();
-//           } else {
-//             alert("Welcome," + user);
-//             const xhr = new XMLHttpRequest();
-//             xhr.open("POST", link);
-//             xhr.send(newdata);
-//             setCookie("username", user, 30);
-//             setCookie("win", 0, 30);
-//             setCookie("lose", 0, 30);
-//           }
-//         } else {
-//           alert("Welcomeback," + user);
-//           winning = recvJson["list"]["0"]["win"];
-//           losing = recvJson["list"]["0"]["lose"];
-//           setCookie("username", user, 30);
-//           setCookie("win", winning, 30);
-//           setCookie("lose", losing, 30);
-//         }
-//       }
-//     };
-//   }
-// }
-// const link = "https://hn216.api.yesapi.cn/api/App/Table/CheckCreateOrUpdate";
-// function Update() {
-//   var update = JSON.stringify({
-//     app_key: "E52FD4B9C437A0A520466D07684DB2A0",
-//     return_data: "1",
-//     model_name: "grade",
-//     data: `{"username":"${user}","win":"${winning}","lose":"${losing}"}`,
-//     check_field: "username",
-//     logic: "or",
-//   });
-//   const request = new XMLHttpRequest();
-//   request.open("POST", link);
-//   request.send(update);
-//   request.onreadystatechange = (e) => {
-//     if (request.readyState == 4) {
-//       alert("Success!");
-//     }
-//   };
-// }
+if (user != "") {
+  var c = confirm("Use history settings?");
+  if (c == false) {
+    user = prompt("Login", "Click Cancel to go offline");
+    if (user != "" && user != null) {
+      var data = JSON.stringify({
+        app_key: "E52FD4B9C437A0A520466D07684DB2A0",
+        return_data: "1",
+        model_name: "grade",
+        select: "username,win,lose",
+        logic: "or",
+        where: `[["username", "=", "${user}"]]`,
+        page: "1",
+        perpage: "10",
+        is_real_total: "1",
+      });
+      var newdata = JSON.stringify({
+        app_key: "E52FD4B9C437A0A520466D07684DB2A0",
+        return_data: "1",
+        model_name: "grade",
+        data: `{"username":"${user}","win":"${winning},"lose":"${losing}"}`,
+        check_field: "username",
+        logic: "or",
+      });
+      const Http = new XMLHttpRequest();
+      const url = "https://hn216.api.yesapi.cn/api/App/Table/FreeQuery";
+      const link =
+        "https://hn216.api.yesapi.cn/api/App/Table/CheckCreateOrUpdate";
+      Http.open("POST", url);
+      Http.send(data);
+      Http.onreadystatechange = (e) => {
+        if (Http.readyState == 4) {
+          recvJson = JSON.parse(Http.responseText);
+          if (typeof recvJson["list"]["0"] == "undefined") {
+            var r = confirm(
+              "Create a new player name? This will erase local data."
+            );
+            if (r == false) {
+              location.reload();
+            } else {
+              alert("Welcome," + user);
+              const xhr = new XMLHttpRequest();
+              xhr.open("POST", link);
+              xhr.send(newdata);
+              setCookie("username", user, 30);
+              setCookie("win", 0, 30);
+              setCookie("lose", 0, 30);
+            }
+          } else {
+            alert("Welcomeback," + user);
+            winning = recvJson["list"]["0"]["win"];
+            losing = recvJson["list"]["0"]["lose"];
+            setCookie("username", user, 30);
+            setCookie("win", winning, 30);
+            setCookie("lose", losing, 30);
+          }
+        }
+      };
+    }
+  } else {
+    alert("Welcomeback," + user);
+  }
+} else {
+  user = prompt("Login", "Click Cancel to go offline");
+  if (user != "" && user != null) {
+    var data = JSON.stringify({
+      app_key: "E52FD4B9C437A0A520466D07684DB2A0",
+      return_data: "1",
+      model_name: "grade",
+      select: "username,win,lose",
+      logic: "or",
+      where: `[["username", "=", "${user}"]]`,
+      page: "1",
+      perpage: "10",
+      is_real_total: "1",
+    });
+    var newdata = JSON.stringify({
+      app_key: "E52FD4B9C437A0A520466D07684DB2A0",
+      return_data: "1",
+      model_name: "grade",
+      data: `{"username":"${user}","win":"${winning},"lose":"${losing}"}`,
+      check_field: "username",
+      logic: "or",
+    });
+    const Http = new XMLHttpRequest();
+    const url = "https://hn216.api.yesapi.cn/api/App/Table/FreeQuery";
+    const link =
+      "https://hn216.api.yesapi.cn/api/App/Table/CheckCreateOrUpdate";
+    Http.open("POST", url);
+    Http.send(data);
+    Http.onreadystatechange = (e) => {
+      if (Http.readyState == 4) {
+        recvJson = JSON.parse(Http.responseText);
+        if (typeof recvJson["list"]["0"] == "undefined") {
+          var r = confirm(
+            "Create a new player name? This will erase local data."
+          );
+          if (r == false) {
+            location.reload();
+          } else {
+            alert("Welcome," + user);
+            const xhr = new XMLHttpRequest();
+            xhr.open("POST", link);
+            xhr.send(newdata);
+            setCookie("username", user, 30);
+            setCookie("win", 0, 30);
+            setCookie("lose", 0, 30);
+          }
+        } else {
+          alert("Welcomeback," + user);
+          winning = recvJson["list"]["0"]["win"];
+          losing = recvJson["list"]["0"]["lose"];
+          setCookie("username", user, 30);
+          setCookie("win", winning, 30);
+          setCookie("lose", losing, 30);
+        }
+      }
+    };
+  }
+}
+const link = "https://hn216.api.yesapi.cn/api/App/Table/CheckCreateOrUpdate";
+function Update() {
+  var update = JSON.stringify({
+    app_key: "E52FD4B9C437A0A520466D07684DB2A0",
+    return_data: "1",
+    model_name: "grade",
+    data: `{"username":"${user}","win":"${winning}","lose":"${losing}"}`,
+    check_field: "username",
+    logic: "or",
+  });
+  const request = new XMLHttpRequest();
+  request.open("POST", link);
+  request.send(update);
+  request.onreadystatechange = (e) => {
+    if (request.readyState == 4) {
+      alert("Success!");
+    }
+  };
+}
 // VARIABLES
 const choices = [
   {
