@@ -227,7 +227,7 @@ let computerChoiceImg = document.querySelector("#computerChoiceImg");
 let computerChoiceTxt = document.querySelector("#computerChoiceTxt");
 let buttons = document.querySelectorAll(".btn");
 let login = document.querySelector("#user");
-let points = [3, 3];
+let points = [3, 100];
 let randomNumber;
 let res = document.querySelector("#res");
 var act = document.getElementById("act");
@@ -291,7 +291,7 @@ buttons.forEach((button) => {
       playerChoiceImg.src = choices[11].image;
       playerChoiceTxt.textContent = choices[11].id;
       playerjudge = true;
-      act.disabled = ture;
+      act.disabled = true;
     }
     getComputerChoice();
   });
@@ -356,14 +356,14 @@ function gameRules() {
   ) {
     act.style.backgroundColor = "#404040";
     points[1] -= 3;
-    resTxt.textContent = "KO";
+    resTxt.textContent = "Dong";
     MoveRight();
   } else if (
     playerChoiceTxt.textContent !== "0" &&
     computerChoiceTxt.textContent === "11"
   ) {
     points[0] -= 3;
-    resTxt.textContent = "KO";
+    resTxt.textContent = "Dong";
     MoveLeft();
   } else if (
     playerChoiceTxt.textContent === "0" &&
