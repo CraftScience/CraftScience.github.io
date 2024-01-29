@@ -291,6 +291,7 @@ buttons.forEach((button) => {
       playerChoiceImg.src = choices[11].image;
       playerChoiceTxt.textContent = choices[11].id;
       playerjudge = true;
+      act.disabled = ture;
     }
     getComputerChoice();
   });
