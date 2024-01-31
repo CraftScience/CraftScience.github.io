@@ -237,63 +237,62 @@ var status3 = document.getElementById("status3");
 var status4 = document.getElementById("status4");
 let playerjudge = 12;
 let computerjudge = 12;
+killjudge = false;
 let kill = false;
 res.textContent =
   `Player:${user}` + " " + `Winning:${winning}` + " " + `Losing:${losing}`;
 // EVENT LISTENERS
 buttons.forEach((button) => {
   button.addEventListener("click", () => {
-    if (button.textcontent != playerjudge) {
-      if (playerjudge == 1) status1.disabled = false;
-      if (playerjudge == 2) status2.disabled = false;
-      if (playerjudge == 3) status3.disabled = false;
-      if (playerjudge == 4) status4.disabled = false;
-    }
     if (button.textContent === "0") {
       playerChoiceImg.src = choices[0].image;
       playerChoiceTxt.textContent = choices[0].id;
+      playerjudge = 0;
     } else if (button.textContent === "1") {
       playerChoiceImg.src = choices[1].image;
       playerChoiceTxt.textContent = choices[1].id;
-      status1.disabled = true;
       playerjudge = 1;
     } else if (button.textContent === "2") {
       playerChoiceImg.src = choices[2].image;
       playerChoiceTxt.textContent = choices[2].id;
-      status2.disabled = true;
       playerjudge = 2;
     } else if (button.textContent === "3") {
       playerChoiceImg.src = choices[3].image;
       playerChoiceTxt.textContent = choices[3].id;
-      status3.disabled = true;
       playerjudge = 3;
     } else if (button.textContent === "4") {
       playerChoiceImg.src = choices[4].image;
       playerChoiceTxt.textContent = choices[4].id;
-      status4.disabled = true;
       playerjudge = 4;
     } else if (button.textContent === "5") {
       playerChoiceImg.src = choices[5].image;
       playerChoiceTxt.textContent = choices[5].id;
+      playerjudge = 5;
     } else if (button.textContent === "6") {
       playerChoiceImg.src = choices[6].image;
       playerChoiceTxt.textContent = choices[6].id;
+      playerjudge = 6;
     } else if (button.textContent === "7") {
       playerChoiceImg.src = choices[7].image;
       playerChoiceTxt.textContent = choices[7].id;
+      playerjudge = 7;
     } else if (button.textContent === "8") {
       playerChoiceImg.src = choices[8].image;
       playerChoiceTxt.textContent = choices[8].id;
+      playerjudge = 8;
     } else if (button.textContent === "9") {
       playerChoiceImg.src = choices[9].image;
       playerChoiceTxt.textContent = choices[9].id;
+      playerjudge = 9;
     } else if (button.textContent === "10") {
       playerChoiceImg.src = choices[10].image;
       playerChoiceTxt.textContent = choices[10].id;
+      playerjudge = 10;
     } else if (button.textContent === "71") {
       playerChoiceImg.src = choices[11].image;
       playerChoiceTxt.textContent = choices[11].id;
       act.disabled = true;
+      act.style.backgroundColor = "#404040 ";
     }
     getComputerChoice();
   });
@@ -301,6 +300,9 @@ buttons.forEach((button) => {
 
 // FUNCTIONS
 function getComputerChoice() {
+  buttons.forEach((button) => {
+    button.disabled = true;
+  });
   computerChoiceImg.src = "./asset/img/waiting.png";
   var current = 10;
   myinterval = setInterval(function () {
@@ -337,6 +339,14 @@ function getComputerChoice() {
     gameRules();
     playerPoints.textContent = points[0];
     computerPoints.textContent = points[1];
+    buttons.forEach((button) => {
+      button.disabled = false;
+    });
+    if (playerjudge == 1) status1.disabled = true;
+    if (playerjudge == 2) status2.disabled = true;
+    if (playerjudge == 3) status3.disabled = true;
+    if (playerjudge == 4) status4.disabled = true;
+    if (killjudge == false) act.disabled = true;
     setTimeout(() => {
       whoWon();
     }, 500);
@@ -350,9 +360,9 @@ function gameRules() {
     playerChoiceTxt.textContent === "11" &&
     computerChoiceTxt.textContent !== "0"
   ) {
-    act.style.backgroundColor = "#404040";
     points[1] -= 3;
     resTxt.textContent = "Dong";
+    killjudge = false;
     MoveRight();
   } else if (
     playerChoiceTxt.textContent !== "0" &&
@@ -479,6 +489,7 @@ function gameRules() {
     act.disabled = false;
     act.style.backgroundColor = "red";
     resTxt.textContent = "Ci";
+    killjudge = true;
     MoveLeft();
   } else if (
     playerChoiceTxt.textContent === "1" &&
@@ -565,6 +576,7 @@ function whoWon() {
     alert("Win！Press any number to restart.");
     points = [3, 3];
     act.disabled = true;
+    killjudge = false;
   } else if (points[0] <= 0) {
     computerjudge = true;
     kill = false;
@@ -579,6 +591,7 @@ function whoWon() {
     alert("Lose! Press any number to restart.");
     points = [3, 3];
     act.disabled = true;
+    killjudge = false;
   }
   res.textContent =
     `Player:${user}` + " " + `Winning:${winning}` + " " + `Losing:${losing}`;
