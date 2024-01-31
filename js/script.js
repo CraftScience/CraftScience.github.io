@@ -227,7 +227,7 @@ let computerChoiceImg = document.querySelector("#computerChoiceImg");
 let computerChoiceTxt = document.querySelector("#computerChoiceTxt");
 let buttons = document.querySelectorAll(".btn");
 let login = document.querySelector("#user");
-let points = [3, 1];
+let points = [3, 3];
 let randomNumber;
 let res = document.querySelector("#res");
 var act = document.getElementById("act");
@@ -337,10 +337,10 @@ function getComputerChoice() {
     gameRules();
     playerPoints.textContent = points[0];
     computerPoints.textContent = points[1];
+    setTimeout(() => {
+      whoWon();
+    }, 500);
   }, time);
-  setTimeout(() => {
-    whoWon();
-  }, time + 500);
 }
 
 function gameRules() {
