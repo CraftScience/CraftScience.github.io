@@ -235,6 +235,7 @@ var status1 = document.getElementById("status1");
 var status2 = document.getElementById("status2");
 var status3 = document.getElementById("status3");
 var status4 = document.getElementById("status4");
+let pvp = document.getElementById("multiplayer");
 let playerjudge = 12;
 let computerjudge = 12;
 killjudge = false;
@@ -244,6 +245,8 @@ res.textContent =
 // EVENT LISTENERS
 buttons.forEach((button) => {
   button.addEventListener("click", () => {
+    playerPoints.textContent = points[0];
+    computerPoints.textContent = points[1];
     if (button.textContent === "0") {
       playerChoiceImg.src = choices[0].image;
       playerChoiceTxt.textContent = choices[0].id;
@@ -563,7 +566,8 @@ const Lose = new Audio("asset/sound/Lose.mp3");
 
 function whoWon() {
   if (points[1] <= 0) {
-    computerjudge = true;
+    computerjudge = 12;
+    playerjudge = 12;
     kill = false;
     status1.disabled = false;
     status2.disabled = false;
@@ -572,13 +576,13 @@ function whoWon() {
     Win.play();
     winning = parseInt(winning) + 1;
     setCookie("win", winning, 30);
-    setCookie("lose", losing, 30);
     alert("Win！Press any number to restart.");
     points = [3, 3];
     act.disabled = true;
     killjudge = false;
   } else if (points[0] <= 0) {
-    computerjudge = true;
+    computerjudge = 12;
+    playerjudge = 12;
     kill = false;
     status1.disabled = false;
     status2.disabled = false;
@@ -586,7 +590,6 @@ function whoWon() {
     status4.disabled = false;
     Lose.play();
     losing = parseInt(losing) + 1;
-    setCookie("win", winning, 30);
     setCookie("lose", losing, 30);
     alert("Lose! Press any number to restart.");
     points = [3, 3];
@@ -644,6 +647,10 @@ function newWindow() {
     url: "./asset/pages/rules.html",
   }).openLayer();
 }
+pvp.onclick = function () {
+  room = prompt("Room ID");
+  window.location.href = encodeURI("./asset/pages/multiplayer.html?id=" + room);
+};
 //Iframe
 function MyLayer(options) {
   this.options = options;

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      type="text/javascript"
+      src="https://cdn.goeasy.io/goeasy-2.10.14.min.js"
+    ></script>
+    <link rel="stylesheet" href="../../css/multiplayer.css" />
+    <title>Multiplayer</title>
+    <link
+      rel="icon"
+      href="https://leeds365-my.sharepoint.com/:i:/r/personal/sc23xs2_leeds_ac_uk/Documents/IMG_0073.png?csf=1&web=1&e=bsqMHB"
+      sizes="192x192"
+    />
+  </head>
+  <body>
+    <div id="container">
+      <div class="playername">
+        <h2 id="player1"></h2>
+        <h2 id="player2">Waiting</h2>
+      </div>
+      <div id="game-container">
+        <div id="points">
+          <label for="playerPoints">Player HP:</label>
+          <span class="playerPoints"></span>
+          <label for="rivalPoints">Rival HP:</label>
+          <span class="rivalPoints"></span>
+        </div>
+        <div id="choice">
+          <div id="playerChoice">
+            <img src="" alt="" id="playerChoiceImg" />
+            <h3 id="playerChoiceTxt"></h3>
+          </div>
+          <div id="rescontainer">
+            <h1 id="resTxt">VS</h1>
+          </div>
+          <div id="rivalChoice">
+            <img src="" alt="" id="rivalChoiceImg" />
+            <h3 id="rivalChoiceTxt"></h3>
+          </div>
+        </div>
+        <div id="buttons">
+          <button class="btn">0</button>
+          <button id="status1" class="btn">1</button>
+          <button id="status2" class="btn">2</button>
+          <button id="status3" class="btn">3</button>
+          <button id="status4" class="btn">4</button>
+          <button class="btn">5</button>
+          <button class="btn">6</button>
+          <button class="btn">7</button>
+          <button class="btn">8</button>
+          <button class="btn">9</button>
+          <button class="btn">10</button>
+          <button id="act" class="btn" disabled="true">71</button>
+        </div>
+      </div>
+    </div>
+    <script src="../../js/multiplayer.js"></script>
+  </body>
+</html>
