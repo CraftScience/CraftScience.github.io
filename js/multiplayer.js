@@ -1,5 +1,6 @@
 let player1 = document.querySelector("#player1");
 let player2 = document.querySelector("#player2");
+let papajudge = 0;
 function getCookie(cname) {
   var name = cname + "=";
   var ca = document.cookie.split(";");
@@ -13,7 +14,6 @@ function getCookie(cname) {
     return "";
   } else return "0";
 }
-var user = getCookie("username");
 var winning = getCookie("win");
 var losing = getCookie("lose");
 function setCookie(cname, cvalue, exdays) {
@@ -29,8 +29,8 @@ function updateCookie(cname, cvalue, exdays) {
   document.cookie = cname + "=" + cvalue + "; " + expires;
 }
 var rivalNumber = 12;
-var room = decodeURI(document.URL); //获取到编码的数据并进行解码
-room = room.slice(room.indexOf("=") + 1);
+var user = decodeURI(document.URL); //获取到编码的数据并进行解码
+user = user.slice(user.indexOf("=") + 1);
 console.log(user);
 player1.textContent = user;
 //初始化GoEasy对象;
@@ -60,7 +60,7 @@ goEasy.connect({
 });
 //订阅消息
 goEasy.pubsub.subscribe({
-  channel: room, //替换为您自己的channel
+  channel:"demo", //替换为您自己的channel
   presence: {
     enable: true,
   },
@@ -69,7 +69,10 @@ goEasy.pubsub.subscribe({
     rival = message.content.split(",");
     if (rival[1] != user) {
       player2.textContent = rival[1];
-      if (0 <= rival[0] <= 11) rivalNumber = parseInt(rival[0]);
+      if (rival[0] == "papa") papajudge = 2;
+      if (rival[0] == "pahui") papajudge = 1;
+      if (0 <= rival[0] <= 10) rivalNumber = parseInt(rival[0]);
+      if (rival[0] == 71) rivalNumber = 11;
       if (rival[0] == 12) publishMessage("13," + user);
       change = true;
     }
@@ -86,7 +89,7 @@ goEasy.pubsub.subscribe({
 //发送
 function publishMessage(num) {
   goEasy.pubsub.publish({
-    channel: room, //替换为您自己的channel
+    channel:"demo", //替换为您自己的channel
     message: num, //替换为您想要发送的消息内容
     onSuccess: function () {
       console.log("消息发布成功。");
@@ -99,7 +102,7 @@ function publishMessage(num) {
   });
 }
 // goEasy.pubsub.subscribePresence({
-//   channel: room,
+//   channel:"demo",
 //   membersLimit: 4, //可选项，定义返回的最新上线成员列表的数量，默认为10，最多支持返回100个成员
 //   onPresence: function (presenceEvent) {
 //     console.log("Presence events: ", JSON.stringify(presenceEvent));
@@ -119,7 +122,7 @@ function publishMessage(num) {
 //   },
 // });
 // goEasy.pubsub.hereNow({
-//   channel: room,
+//   channel:"demo",
 //   limit: 4, //可选项，定义返回的最新上线成员列表的数量，默认为10，最多支持返回最新上线的100个成员
 //   onSuccess: function (response) {
 //     //获取成功
@@ -264,6 +267,7 @@ buttons.forEach((button) => {
       playerChoiceTxt.textContent = choices[11].id;
       act.disabled = true;
       act.style.backgroundColor = "#404040 ";
+      killjudge = false;
     }
     publishMessage(button.textContent + "," + user);
     getRivalChoice();
@@ -415,11 +419,13 @@ function gameRules() {
   ) {
     var ch = confirm("Choose OK to PaPa or Cancel to PaHui");
     if (ch == false) {
+      publishMessage("pahui," + user);
       points[1] -= 1;
       points[0] += 1;
       resTxt.textContent = "PaHui";
       MoveRight();
     } else {
+      publishMessage("papa," + user);
       points[1] -= 2;
       resTxt.textContent = "PaPa";
       MoveRight();
@@ -428,16 +434,21 @@ function gameRules() {
     playerChoiceTxt.textContent === "2" &&
     rivalChoiceTxt.textContent === "8"
   ) {
-    if (points[0] == 2 || points[1] > 1) {
-      points[0] -= 2;
-      resTxt.textContent = "PaPa";
-      MoveLeft();
-    } else {
-      points[0] -= 1;
-      points[1] += 1;
-      resTxt.textContent = "PaHui";
-      MoveLeft();
+  var papainterval = setInterval(function () {
+    if (papajudge!=0) {
+      if (papajudge==2) {
+        points[0] -= 2;
+        resTxt.textContent = "PaPa";
+        MoveLeft();
+      } else if(papajudge==1) {
+        points[0] -= 1;
+        points[1] += 1;
+        resTxt.textContent = "PaHui";
+        MoveLeft();
+      }
+      clearInterval(papainterval);
     }
+  }, 1000);
   } else if (
     playerChoiceTxt.textContent === "7" &&
     rivalChoiceTxt.textContent === "1"

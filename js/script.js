@@ -649,7 +649,7 @@ function newWindow() {
 }
 pvp.onclick = function () {
   room = prompt("Room ID");
-  window.location.href = encodeURI("./asset/pages/multiplayer.html?id=" + room);
+  window.location.href = encodeURI("./asset/pages/multiplayer.html?id=" + user);
 };
 //Iframe
 function MyLayer(options) {
