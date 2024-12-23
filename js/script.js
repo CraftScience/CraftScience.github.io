@@ -1,4 +1,4 @@
-﻿function getCookie(cname) {
+function getCookie(cname) {
   var name = cname + "=";
   var ca = document.cookie.split(";");
   for (var i = 0; i < ca.length; i++) {
@@ -644,11 +644,10 @@ function newWindow() {
     height: "80%",
     title: "Game Rules",
     content: "",
-    url: "./asset/pages/rules.html",
+    url: "/html/rules.html",
   }).openLayer();
 }
 pvp.onclick = function () {
-  room = prompt("Room ID");
   window.location.href = encodeURI("./asset/pages/multiplayer.html?id=" + user);
 };
 //Iframe

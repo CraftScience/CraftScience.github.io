@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/pace-js@latest/pace.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/pace-js@latest/pace-theme-default.min.css"
+      ></link>
+    <link rel="stylesheet" href="/css/gamestyle.css" />
+    <link rel="prefetch" href="/img/waiting.png" />
+    <link rel="prefetch" href="/img/eight.png" />
+    <link rel="prefetch" href="/img/five.png" />
+    <link rel="prefetch" href="/img/four.png" />
+    <link rel="prefetch" href="/img/nine.png" />
+    <link rel="prefetch" href="/img/one.png" />
+    <link rel="prefetch" href="/img/seven-one.png" />
+    <link rel="prefetch" href="/img/seven.png" />
+    <link rel="prefetch" href="/img/six.png" />
+    <link rel="prefetch" href="/img/ten.png" />
+    <link rel="prefetch" href="/img/three.png" />
+    <link rel="prefetch" href="/img/two.png" />
+    <title>FingerGame</title>
+    <link
+      rel="icon"
+      href="https://leeds365-my.sharepoint.com/:i:/r/personal/sc23xs2_leeds_ac_uk/Documents/IMG_0073.png?csf=1&web=1&e=bsqMHB"
+      sizes="192x192"
+    />
+  </head>
+  <body>
+    <div id="container">
+      <h2>FingerGame</h2>
+      <div id="game-container">
+        <div id="points">
+          <label for="playerPoints">Player HP:</label>
+          <span class="playerPoints"></span>
+          <label for="computerPoints">Computer HP:</label>
+          <span class="computerPoints"></span>
+        </div>
+        <div id="choice">
+          <div id="playerChoice">
+            <img src="" alt="" id="playerChoiceImg" />
+            <h3 id="playerChoiceTxt"></h3>
+          </div>
+          <div id="rescontainer">
+            <h1 id="resTxt">VS</h1>
+          </div>
+          <div id="computerChoice">
+            <img src="" alt="" id="computerChoiceImg" />
+            <h3 id="computerChoiceTxt"></h3>
+          </div>
+        </div>
+        <div id="buttons">
+          <button class="btn">0</button>
+          <button id="status1" class="btn">1</button>
+          <button id="status2"class="btn">2</button>
+          <button id="status3"class="btn">3</button>
+          <button id="status4"class="btn">4</button>
+          <button class="btn">5</button>
+          <button class="btn">6</button>
+          <button class="btn">7</button>
+          <button class="btn">8</button>
+          <button class="btn">9</button>
+          <button class="btn">10</button>
+          <button id="act" class="btn" disabled="true">71</button>
+        </div>
+            <h3 id="res"></h3>
+      </div>
+      <button id="multiplayer">Multiplayer</button>
+    </div>
+    <div class="_th-container">
+      <div class="_th-click-hover _item-input" onclick="openWindow()">
+        Leaderboard
+      </div>
+      <div class="_th-item _item-reset" onclick="newWindow()">GameRules</div>
+      <div class="_th-item _item-reset _new" onclick="Update()">UploadData</div>
+    </div>
+    <script src="/js/script.js"></script>
+  </body>
+</html>

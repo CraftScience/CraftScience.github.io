@@ -60,7 +60,7 @@ goEasy.connect({
 });
 //订阅消息
 goEasy.pubsub.subscribe({
-  channel:"demo", //替换为您自己的channel
+  channel: "demo", //替换为您自己的channel
   presence: {
     enable: true,
   },
@@ -89,7 +89,7 @@ goEasy.pubsub.subscribe({
 //发送
 function publishMessage(num) {
   goEasy.pubsub.publish({
-    channel:"demo", //替换为您自己的channel
+    channel: "demo", //替换为您自己的channel
     message: num, //替换为您想要发送的消息内容
     onSuccess: function () {
       console.log("消息发布成功。");
@@ -434,21 +434,23 @@ function gameRules() {
     playerChoiceTxt.textContent === "2" &&
     rivalChoiceTxt.textContent === "8"
   ) {
-  var papainterval = setInterval(function () {
-    if (papajudge!=0) {
-      if (papajudge==2) {
-        points[0] -= 2;
-        resTxt.textContent = "PaPa";
-        MoveLeft();
-      } else if(papajudge==1) {
-        points[0] -= 1;
-        points[1] += 1;
-        resTxt.textContent = "PaHui";
-        MoveLeft();
+    var papainterval = setInterval(function () {
+      if (papajudge != 0) {
+        if (papajudge == 2) {
+          points[0] -= 2;
+          resTxt.textContent = "PaPa";
+          MoveLeft();
+        } else if (papajudge == 1) {
+          points[0] -= 1;
+          points[1] += 1;
+          resTxt.textContent = "PaHui";
+          MoveLeft();
+        }
+        rivalNumber = 12;
+        papajudge = 0;
+        clearInterval(papainterval);
       }
-      clearInterval(papainterval);
-    }
-  }, 1000);
+    }, 1000);
   } else if (
     playerChoiceTxt.textContent === "7" &&
     rivalChoiceTxt.textContent === "1"
